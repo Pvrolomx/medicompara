@@ -27,4 +27,4 @@ Adultos mayores expats estadounidenses en México que necesitan encontrar sus me
 
 ---
 
-Hecho con 🧡 por Colmena 2026
+Hecho con 🧡 por Colmena 2026 🐝
