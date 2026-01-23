@@ -3,7 +3,7 @@ import Script from 'next/script'
 
 export const metadata = {
   title: 'MediCompara MX',
-  description: 'Tu medicina gringa, mejor precio en México',
+  description: 'Tu medicina gringa al mejor precio en México',
   manifest: '/manifest.json',
   themeColor: '#059669',
   viewport: {
@@ -25,6 +25,11 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="apple-touch-icon" href="/icon-192.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2mZ0erVodeFMqlIBK9N72EwLIuyEj3Ys&libraries=places"
+          async
+          defer
+        />
       </head>
       <body className="bg-stone-50 text-gray-900 min-h-screen">
         {children}
