@@ -303,14 +303,14 @@ export default function Home() {
       </div>
 
       {/* Main content */}
-      <main className="flex-1 pt-4 pb-20">
+      <main className="flex-1 pb-20">
         
         {/* HOME SCREEN */}
         {screen === 'home' && (
-          <div className="relative min-h-[calc(100vh-136px)]">
-            {/* Background image + overlay */}
-            <div className="absolute inset-0 bg-[url('/hero-bg.png')] bg-cover bg-center" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+          <div className="relative min-h-screen">
+            {/* Background image + overlay - FIXED FULL SCREEN */}
+            <div className="fixed inset-0 bg-[url('/hero-bg.png')] bg-cover bg-center" />
+            <div className="fixed inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
             
             <div className="relative z-10 p-6 flex flex-col h-full">
               {/* Logo y tagline */}
@@ -564,7 +564,7 @@ export default function Home() {
 
       {/* Footer */}
       <div className="text-center text-sm text-white/70 pb-2 fixed bottom-16 left-0 right-0 bg-transparent">
-        Hecho con 🧡 por Colmena 2026
+        Hecho con 🧡 por duendes.app 2026
       </div>
     </div>
   )
