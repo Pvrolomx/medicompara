@@ -51,6 +51,10 @@ export default function Home() {
   const [lang, setLang] = useState('es')
   const [modoFarmacia, setModoFarmacia] = useState(null)
   const [recientes, setRecientes] = useState([])
+  const [ubicacion, setUbicacion] = useState(null)
+  const [farmaciasReales, setFarmaciasReales] = useState([])
+  const [cargandoFarmacias, setCargandoFarmacias] = useState(false)
+  const [errorUbicacion, setErrorUbicacion] = useState(null)
 
   // Cargar datos del localStorage
   useEffect(() => {
@@ -64,6 +68,96 @@ export default function Home() {
   useEffect(() => {
     localStorage.setItem('medicompara-lista', JSON.stringify(miLista))
   }, [miLista])
+
+  // Obtener ubicación del usuario
+  const obtenerUbicacion = () => {
+    setCargandoFarmacias(true)
+    setErrorUbicacion(null)
+    
+    if (!navigator.geolocation) {
+      setErrorUbicacion(lang === 'es' ? 'Tu navegador no soporta geolocalización' : 'Your browser does not support geolocation')
+      setCargandoFarmacias(false)
+      return
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const loc = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+        setUbicacion(loc)
+        buscarFarmaciasReales(loc)
+      },
+      (error) => {
+        console.error('Error de ubicación:', error)
+        setErrorUbicacion(lang === 'es' ? 'No pudimos obtener tu ubicación' : 'Could not get your location')
+        setCargandoFarmacias(false)
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    )
+  }
+
+  // Buscar farmacias cercanas con Google Places API
+  const buscarFarmaciasReales = (loc) => {
+    if (typeof google === 'undefined' || !google.maps) {
+      console.error('Google Maps no cargado')
+      setCargandoFarmacias(false)
+      return
+    }
+
+    const service = new google.maps.places.PlacesService(document.createElement('div'))
+    
+    const request = {
+      location: new google.maps.LatLng(loc.lat, loc.lng),
+      radius: 5000, // 5km
+      type: 'pharmacy',
+      keyword: 'farmacia'
+    }
+
+    service.nearbySearch(request, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+        const farmaciasConDistancia = results.slice(0, 6).map(place => {
+          const distancia = calcularDistancia(loc.lat, loc.lng, place.geometry.location.lat(), place.geometry.location.lng())
+          return {
+            nombre: place.name,
+            direccion: place.vicinity || 'Dirección no disponible',
+            distancia: distancia < 1 ? (distancia * 1000).toFixed(0) + ' m' : distancia.toFixed(1) + ' km',
+            distanciaNum: distancia,
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng(),
+            rating: place.rating || null,
+            placeId: place.place_id
+          }
+        }).sort((a, b) => a.distanciaNum - b.distanciaNum)
+        
+        setFarmaciasReales(farmaciasConDistancia)
+      } else {
+        console.error('Error buscando farmacias:', status)
+      }
+      setCargandoFarmacias(false)
+    })
+  }
+
+  // Calcular distancia entre dos puntos (Haversine)
+  const calcularDistancia = (lat1, lon1, lat2, lon2) => {
+    const R = 6371 // km
+    const dLat = (lat2 - lat1) * Math.PI / 180
+    const dLon = (lon2 - lon1) * Math.PI / 180
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon/2) * Math.sin(dLon/2)
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+    return R * c
+  }
+
+  // Abrir en Google Maps
+  const abrirMaps = (farmacia) => {
+    const url = \`https://www.google.com/maps/dir/?api=1&destination=\${farmacia.lat},\${farmacia.lng}\`
+    window.open(url, '_blank')
+  }
+
+
 
   // Buscar medicamento con tolerancia a typos
   const buscar = (query) => {
