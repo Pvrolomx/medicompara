@@ -153,7 +153,7 @@ export default function Home() {
 
   // Abrir en Google Maps
   const abrirMaps = (farmacia) => {
-    const url = \`https://www.google.com/maps/dir/?api=1&destination=\${farmacia.lat},\${farmacia.lng}\`
+    const url = `https://www.google.com/maps/dir/?api=1&destination=${farmacia.lat},${farmacia.lng}`
     window.open(url, '_blank')
   }
 
