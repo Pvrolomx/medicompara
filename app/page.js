@@ -122,7 +122,7 @@ export default function Home() {
   const t = {
     es: {
       buscar: 'Buscar medicina...',
-      tuMedicina: 'Tu medicina gringa, mejor precio en México',
+      tuMedicina: 'Tu medicina gringa al mejor precio en México',
       recientes: 'Recientes',
       misMedicinas: 'Mis Medicinas',
       farmacias: 'Farmacias Cerca',
@@ -176,18 +176,18 @@ export default function Home() {
       <div className="fixed inset-0 bg-white flex flex-col items-center justify-center p-8 z-50">
         <div className="text-center">
           <p className="text-6xl md:text-8xl font-bold text-gray-900 mb-4">{modoFarmacia.mx}</p>
-          <p className="text-4xl md:text-5xl text-gray-700 mb-8">{modoFarmacia.dosis}</p>
+          <p className="text-xl md:text-lg md:text-2xl md:text-5xl text-gray-700 mb-8">{modoFarmacia.dosis}</p>
           <div className="border-t-2 border-gray-300 pt-8 mt-8">
-            <p className="text-4xl text-gray-600 mb-4">Caja de 30</p>
+            <p className="text-xl md:text-lg md:text-2xl text-gray-600 mb-4">Caja de 30</p>
           </div>
         </div>
         <div className="mt-auto">
           <div className="bg-farmacia/10 rounded-xl p-4 mb-6 text-center">
-            <p className="text-4xl text-farmacia font-medium">📱 {t.muestreAlFarmaceutico}</p>
+            <p className="text-xl md:text-lg md:text-2xl text-farmacia font-medium">📱 {t.muestreAlFarmaceutico}</p>
           </div>
           <button
             onClick={() => setModoFarmacia(null)}
-            className="w-full py-4 text-4xl text-gray-600 border-2 border-gray-300 rounded-full"
+            className="w-full py-4 text-xl md:text-lg md:text-2xl text-gray-600 border-2 border-gray-300 rounded-full"
           >
             ✕ {t.cerrar}
           </button>
@@ -200,7 +200,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       {/* Header con toggle de idioma */}
       <div className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-40 px-4 py-2 flex justify-between items-center border-b">
-        <h1 className="text-4xl font-bold text-farmacia">🇲🇽 MediCompara</h1>
+        <h1 className="text-xl md:text-lg md:text-lg md:text-xl font-bold text-farmacia">🇲🇽 MediCompara</h1>
         <button
           onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
           className="text-base px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200"
@@ -222,8 +222,8 @@ export default function Home() {
             <div className="relative z-10 p-6 flex flex-col h-full">
               {/* Logo y tagline */}
               <div className="text-center pt-8 pb-6">
-                <h2 className="text-4xl font-bold text-white mb-2">🇲🇽 MediCompara</h2>
-                <p className="text-white/90 text-4xl">{t.tuMedicina}</p>
+                <h2 className="text-xl md:text-lg md:text-lg md:text-xl font-bold text-white mb-2">🇲🇽 MediCompara</h2>
+                <p className="text-white/90 text-xl md:text-lg md:text-2xl">{t.tuMedicina}</p>
               </div>
 
               {/* Barra de búsqueda */}
@@ -235,7 +235,7 @@ export default function Home() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && buscar(search)}
-                    className="flex-1 px-5 py-4 text-4xl outline-none"
+                    className="flex-1 px-5 py-4 text-xl md:text-lg md:text-2xl outline-none"
                   />
                   <button
                     onClick={() => buscar(search)}
@@ -270,15 +270,15 @@ export default function Home() {
                   onClick={() => setScreen('milista')}
                   className="w-full bg-white/20 backdrop-blur rounded-xl p-4 text-left text-white hover:bg-white/30 transition flex items-center justify-between"
                 >
-                  <span className="text-4xl">💊 {t.misMedicinas} ({miLista.length})</span>
-                  <span className="text-4xl">→</span>
+                  <span className="text-xl md:text-lg md:text-2xl">💊 {t.misMedicinas} ({miLista.length})</span>
+                  <span className="text-xl md:text-lg md:text-2xl">→</span>
                 </button>
                 <button
                   onClick={() => setScreen('farmacias')}
                   className="w-full bg-white/20 backdrop-blur rounded-xl p-4 text-left text-white hover:bg-white/30 transition flex items-center justify-between"
                 >
-                  <span className="text-4xl">📍 {t.farmacias}</span>
-                  <span className="text-4xl">→</span>
+                  <span className="text-xl md:text-lg md:text-2xl">📍 {t.farmacias}</span>
+                  <span className="text-xl md:text-lg md:text-2xl">→</span>
                 </button>
               </div>
             </div>
@@ -291,13 +291,13 @@ export default function Home() {
             <button onClick={() => setScreen('home')} className="text-farmacia mb-4">← Atrás</button>
             
             <p className="text-gray-600 text-base">{t.tuBusqueda}</p>
-            <p className="text-4xl font-bold mb-4">{resultado.usa} {resultado.dosis}</p>
+            <p className="text-xl md:text-lg md:text-lg md:text-xl font-bold mb-4">{resultado.usa} {resultado.dosis}</p>
             
             <div className="border-t-2 border-farmacia pt-4 mb-4">
               <p className="text-gray-600">{t.enMexico}</p>
               <div className="bg-farmacia/10 rounded-xl p-4 mt-2">
-                <p className="text-4xl font-bold text-farmacia">{resultado.mx}</p>
-                <p className="text-4xl text-gray-700">{resultado.dosis}</p>
+                <p className="text-xl md:text-lg md:text-lg md:text-xl font-bold text-farmacia">{resultado.mx}</p>
+                <p className="text-xl md:text-lg md:text-2xl text-gray-700">{resultado.dosis}</p>
                 <div className="flex gap-2 mt-3">
                   <button
                     onClick={() => {
@@ -340,21 +340,21 @@ export default function Home() {
             </div>
 
             <div className="bg-naranja/20 p-3 rounded-lg mb-4 text-center">
-              <p className="text-naranja font-bold text-4xl">
+              <p className="text-naranja font-bold text-xl md:text-lg md:text-2xl">
                 💵 {t.ahorras}: ~${resultado.precioUSA - resultado.precioSimilares} MXN ({Math.round((1 - resultado.precioSimilares/resultado.precioUSA) * 100)}%)
               </p>
             </div>
 
             <button
               onClick={() => setModoFarmacia(resultado)}
-              className="w-full py-4 bg-farmacia text-white text-4xl font-bold rounded-xl mb-3 hover:bg-farmacia-dark transition"
+              className="w-full py-4 bg-farmacia text-white text-xl md:text-lg md:text-lg md:text-xl font-bold rounded-xl mb-3 hover:bg-farmacia-dark transition"
             >
               🏪 {t.modoFarmacia}
             </button>
 
             <button
               onClick={() => window.open('tel:' + farmacias[0].tel, '_self')}
-              className="w-full py-5 bg-green-600 text-white text-2xl font-bold rounded-xl mb-3 hover:bg-green-700 transition flex items-center justify-center gap-3"
+              className="w-full py-5 bg-green-600 text-white text-lg md:text-xl font-bold rounded-xl mb-3 hover:bg-green-700 transition flex items-center justify-center gap-3"
             >
               📞 {lang === 'es' ? 'Llamar Farmacia Cercana' : 'Call Nearest Pharmacy'}
             </button>
@@ -372,14 +372,14 @@ export default function Home() {
         {screen === 'milista' && (
           <div className="p-4">
             <button onClick={() => setScreen('home')} className="text-farmacia mb-4">← Atrás</button>
-            <h2 className="text-4xl font-bold mb-4">💊 {t.misMedicinas}</h2>
+            <h2 className="text-xl md:text-lg md:text-lg md:text-xl font-bold mb-4">💊 {t.misMedicinas}</h2>
             
             {miLista.length === 0 ? (
               <p className="text-gray-500 text-center py-8">No tienes medicinas guardadas</p>
             ) : (
               <>
                 <div className="bg-naranja/20 p-4 rounded-xl mb-4">
-                  <p className="text-naranja font-bold text-4xl text-center">
+                  <p className="text-naranja font-bold text-xl md:text-lg md:text-2xl text-center">
                     💰 {t.ahorro} ${calcularAhorro()} MXN/mes
                   </p>
                 </div>
@@ -424,11 +424,11 @@ export default function Home() {
         {screen === 'farmacias' && (
           <div className="p-4">
             <button onClick={() => setScreen('home')} className="text-farmacia mb-4">← Atrás</button>
-            <h2 className="text-4xl font-bold mb-4">📍 {t.farmacias}</h2>
+            <h2 className="text-xl md:text-lg md:text-lg md:text-xl font-bold mb-4">📍 {t.farmacias}</h2>
             
             {farmacias.map((f, i) => (
               <div key={i} className="bg-white rounded-xl p-4 shadow mb-3">
-                <p className="font-bold text-4xl">{f.nombre}</p>
+                <p className="font-bold text-xl md:text-lg md:text-2xl">{f.nombre}</p>
                 <p className="text-gray-600 text-base">{f.direccion}</p>
                 <p className="text-farmacia font-medium">{f.distancia}</p>
                 <div className="flex gap-2 mt-3">
@@ -456,15 +456,15 @@ export default function Home() {
       {/* Tab Bar */}
       <nav className="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around py-3 z-40">
         <button onClick={() => setScreen('home')} className={`flex flex-col items-center ${screen === 'home' ? 'text-farmacia' : 'text-gray-400'}`}>
-          <span className="text-4xl">🏠</span>
+          <span className="text-xl md:text-lg md:text-2xl">🏠</span>
           <span className="text-sm">Home</span>
         </button>
         <button onClick={() => setScreen('milista')} className={`flex flex-col items-center ${screen === 'milista' ? 'text-farmacia' : 'text-gray-400'}`}>
-          <span className="text-4xl">💊</span>
+          <span className="text-xl md:text-lg md:text-2xl">💊</span>
           <span className="text-sm">{lang === 'es' ? 'Lista' : 'List'}</span>
         </button>
         <button onClick={() => setScreen('farmacias')} className={`flex flex-col items-center ${screen === 'farmacias' ? 'text-farmacia' : 'text-gray-400'}`}>
-          <span className="text-4xl">📍</span>
+          <span className="text-xl md:text-lg md:text-2xl">📍</span>
           <span className="text-sm">{lang === 'es' ? 'Farmacias' : 'Pharmacies'}</span>
         </button>
       </nav>
