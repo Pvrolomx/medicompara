@@ -293,18 +293,17 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header con toggle de idioma */}
-      <div className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-40 px-4 py-2 flex justify-between items-center border-b">
-        <h1 className="text-xl md:text-lg md:text-lg md:text-xl font-bold text-farmacia">🇲🇽 MediCompara</h1>
+      <div className="fixed top-0 right-0 z-40 p-3">
         <button
           onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
-          className="text-base px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200"
+          className="text-base px-4 py-2 rounded-full bg-white/20 backdrop-blur text-white hover:bg-white/30 transition shadow-lg"
         >
           {lang === 'es' ? '🇺🇸 EN' : '🇲🇽 ES'}
         </button>
       </div>
 
       {/* Main content */}
-      <main className="flex-1 pt-14 pb-20">
+      <main className="flex-1 pt-4 pb-20">
         
         {/* HOME SCREEN */}
         {screen === 'home' && (
@@ -316,7 +315,7 @@ export default function Home() {
             <div className="relative z-10 p-6 flex flex-col h-full">
               {/* Logo y tagline */}
               <div className="text-center pt-8 pb-6">
-                <h2 className="text-xl md:text-lg md:text-lg md:text-xl font-bold text-white mb-2">🇲🇽 MediCompara</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg">🇲🇽 MediCompara</h2>
                 <p className="text-white/90 text-xl md:text-lg md:text-2xl">{t.tuMedicina}</p>
               </div>
 
@@ -548,7 +547,7 @@ export default function Home() {
       </main>
 
       {/* Tab Bar */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around py-3 z-40">
+      <nav className="fixed bottom-0 left-0 right-0 bg-white/20 backdrop-blur flex justify-around py-3 z-40">
         <button onClick={() => setScreen('home')} className={`flex flex-col items-center ${screen === 'home' ? 'text-farmacia' : 'text-gray-400'}`}>
           <span className="text-xl md:text-lg md:text-2xl">🏠</span>
           <span className="text-sm">Home</span>
@@ -564,7 +563,7 @@ export default function Home() {
       </nav>
 
       {/* Footer */}
-      <div className="text-center text-sm text-gray-400 pb-2 fixed bottom-16 left-0 right-0">
+      <div className="text-center text-sm text-white/70 pb-2 fixed bottom-16 left-0 right-0 bg-transparent">
         Hecho con 🧡 por Colmena 2026
       </div>
     </div>
