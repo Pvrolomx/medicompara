@@ -563,9 +563,11 @@ export default function Home() {
       </nav>
 
       {/* Footer */}
-      <div className="text-center text-sm text-white/70 pb-2 fixed bottom-16 left-0 right-0 bg-transparent">
-        Hecho con 🧡 por duendes.app 2026
-      </div>
+      {process.env.NEXT_PUBLIC_SHOW_FIRMA !== "false" && (
+        <div className="text-center text-sm text-white/70 pb-2 fixed bottom-16 left-0 right-0 bg-transparent">
+          Hecho con 🧡 por duendes.app 2026
+        </div>
+      )}
     </div>
   )
 }
