@@ -562,6 +562,16 @@ export default function Home() {
         </button>
       </nav>
 
+      {/* Ko-fi Button */}
+      <a
+        href="https://ko-fi.com/condoadviser"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed top-16 right-3 z-50 bg-[#ff5e5b] hover:bg-[#ff4542] text-white px-3 py-2 rounded-full shadow-lg text-sm font-medium transition-all"
+      >
+        ☕ {lang === 'es' ? 'Apoyar' : 'Support'}
+      </a>
+
       {/* Footer */}
       {process.env.NEXT_PUBLIC_SHOW_FIRMA !== "false" && (
         <div className="text-center text-sm text-white/70 pb-2 fixed bottom-16 left-0 right-0 bg-transparent">
